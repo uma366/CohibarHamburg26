@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cohibar Hamburg</title>
+<meta name="description" content="Cohibar Hamburg – Drinks, Shisha und Atmosphäre am Gertrudenkirchhof. Demo-Inhalte.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050403;--bg2:#0e0b07;--panel:#14100a;--gold:#d4af37;--gold-hi:#fff0b3;--gold-lo:#8a6a1c;--text:#e9e1d0;--mute:#9b9078;
+--serif:"Bodoni Moda","Didot","Playfair Display",Georgia,serif;--sans:"Jost","Helvetica Neue",Arial,sans-serif;
+--goldgrad:linear-gradient(180deg,#f1dc9a 0%,#d4af37 55%,#a98123 100%);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{height:auto;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit;margin:0}
+body{background:var(--bg);color:var(--text);font:300 1.0625rem/1.7 var(--sans);overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+.depth{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.depth i{position:absolute;display:block;will-change:transform}
+.d1{left:50%;top:-30vh;width:120vw;height:90vh;margin-left:-60vw;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.2),rgba(212,175,55,.05) 45%,transparent 70%);transform:translateY(calc(var(--sy,0)*-.06px))}
+.d2{left:-20vw;bottom:-25vh;width:70vw;height:70vh;background:radial-gradient(closest-side,rgba(138,106,28,.22),transparent);transform:translateY(calc(var(--sy,0)*-.12px))}
+.d3{inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(0,0,0,.75) 100%)}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(env(safe-area-inset-top,0px) + 14px) clamp(18px,4vw,56px) 14px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+header.solid{box-shadow:0 12px 40px rgba(0,0,0,.6);background:rgba(5,4,3,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(212,175,55,.2)}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.5rem;letter-spacing:.04em;background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo small{font:300 .72rem var(--sans);letter-spacing:.35em;margin-left:.6em;-webkit-text-fill-color:var(--mute)}
+nav{display:flex;gap:clamp(14px,2.4vw,34px)}
+nav a{font-size:.95rem;letter-spacing:.08em;color:var(--mute);padding:6px 2px;position:relative;transition:color .3s}
+nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--goldgrad);transition:right .4s cubic-bezier(.2,.8,.2,1)}
+nav a:hover,nav a.on{color:var(--gold-hi)}
+nav a:hover::after,nav a.on::after{right:0}
+.burger{display:none;background:none;border:1px solid rgba(212,175,55,.4);color:var(--gold);border-radius:2px;padding:8px 16px;font:400 .9rem var(--sans);cursor:pointer}
+main{position:relative;z-index:3}
+.view{display:none;min-height:100vh;padding:clamp(110px,16vh,160px) clamp(18px,5vw,72px) 80px}
+.view.on{display:block;animation:enter .7s ease both}
+@keyframes enter{from{opacity:0}to{opacity:1}}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08}
+.gold{background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:.5em;font-weight:500}
+h2.gold,.logo{filter:drop-shadow(0 2px 0 rgba(0,0,0,.7)) drop-shadow(0 10px 24px rgba(212,175,55,.18))}
+h2::after{content:"";display:block;width:64px;height:1px;background:var(--gold);margin-top:.5em}
+.lead{color:var(--mute);max-width:56ch;font-size:1.15rem}
+.wrap{max-width:1100px;margin:0 auto}
+/* hero */
+#start{display:none;padding:0;min-height:100svh;position:relative}
+#start.on{display:grid;place-items:center;text-align:center}
+.mark{position:absolute;left:50%;top:50%;font:500 clamp(22rem,60vw,48rem)/1 var(--serif);color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.16);transform:translate(-50%,calc(-50% + var(--sy,0)*.18px));pointer-events:none;user-select:none;z-index:-1;text-shadow:0 0 120px rgba(212,175,55,.08)}
+.beam{position:absolute;top:0;left:50%;width:2px;height:55%;background:linear-gradient(rgba(255,240,179,.5),transparent);box-shadow:0 0 60px 30px rgba(212,175,55,.08)}
+.hero{position:relative;padding:120px 22px 90px;max-width:900px}
+.hero h1{text-shadow:0 2px 0 rgba(0,0,0,.6),0 24px 60px rgba(0,0,0,.8);font-size:clamp(3rem,10vw,7.5rem);font-weight:500;letter-spacing:.02em;opacity:0;animation:rise 1.4s .2s ease forwards}
+.hero h1 span{display:block;font-style:normal;font-weight:400;font-size:.3em;letter-spacing:.5em;margin-top:.7em;color:var(--gold);padding-left:.5em}
+.hero p{margin:2rem auto 2.4rem;max-width:44ch;font-size:1.2rem;color:var(--text);opacity:0;animation:rise 1.4s .7s ease forwards}
+.cta{opacity:0;animation:rise 1.4s 1s ease forwards;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.btn{display:inline-block;padding:14px 36px;border-radius:2px;font:400 .9rem var(--sans);letter-spacing:.16em;text-transform:none;border:1px solid var(--gold);color:var(--gold-hi);background:transparent;cursor:pointer;transition:background .3s,color .3s}
+.btn.fill{background:var(--goldgrad);color:#1a1205;border-color:#d4af37;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.2),0 10px 24px rgba(0,0,0,.5),0 0 30px rgba(212,175,55,.15)}
+.btn:hover{background:rgba(212,175,55,.14)}
+.btn.fill:hover{background:var(--gold-hi);color:#1a1205}
+/* teasers */
+.teasers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:56px}
+.glass{position:relative;border-radius:4px;padding:32px;background:linear-gradient(165deg,rgba(255,240,179,.08),rgba(20,16,10,.82) 38%,rgba(8,6,3,.9));border:1px solid rgba(212,175,55,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:inset 0 1px 0 rgba(255,240,179,.28),inset 0 -40px 60px -40px rgba(0,0,0,.7),0 2px 4px rgba(0,0,0,.5),0 12px 24px rgba(0,0,0,.45),0 40px 80px rgba(0,0,0,.55);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .5s}
+.glass::before{content:"";position:absolute;left:12%;right:12%;top:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);opacity:.7}
+.glass:hover{transform:translateY(-4px);border-color:rgba(255,240,179,.4);box-shadow:inset 0 1px 0 rgba(255,240,179,.35),inset 0 -40px 60px -40px rgba(0,0,0,.7),0 4px 8px rgba(0,0,0,.5),0 22px 40px rgba(0,0,0,.5),0 60px 110px rgba(0,0,0,.6),0 0 60px rgba(212,175,55,.08)}
+.glass:hover::after{opacity:1}
+.teasers .glass h3{font-size:1.7rem;margin-bottom:.4em;color:var(--gold-hi)}
+.teasers .glass p{color:var(--mute)}
+/* about */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center;margin-top:28px}
+.about p{margin-bottom:1.2em;max-width:60ch}
+.quote{font:italic 400 clamp(1.5rem,3vw,2.2rem)/1.3 var(--serif);color:var(--gold-hi);border-left:2px solid var(--gold);padding-left:24px;margin:1.6em 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stats .glass{text-align:center;padding:26px 12px}
+.stats b{display:block;font:500 2.6rem var(--serif)}
+.stats span{color:var(--mute);font-size:.9rem}
+/* menu */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 36px}
+.tab{background:none;color:var(--mute);border:1px solid rgba(212,175,55,.25);border-radius:2px;padding:9px 22px;font:400 .95rem var(--sans);letter-spacing:.05em;cursor:pointer;transition:all .3s}
+.tab:hover{color:var(--gold-hi)}
+.tab[aria-selected=true]{background:var(--goldgrad);color:#1a1205;border-color:#f3d77a}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:16px}
+.item{padding:22px 26px}
+.row{display:flex;align-items:baseline;gap:12px}
+.row h3{font-size:1.45rem;color:var(--gold-hi)}
+.row i{flex:1;border-bottom:1px dotted rgba(212,175,55,.35);transform:translateY(-4px)}
+.row b{font:500 1.15rem var(--sans);color:var(--gold)}
+.item p{color:var(--mute);font-size:.98rem;margin-top:4px}
+.meter{display:flex;gap:5px;margin-top:12px}
+.meter u{width:26px;height:4px;border-radius:2px;background:rgba(212,175,55,.18)}
+.meter u.f{background:var(--goldgrad)}
+.note{color:var(--mute);font-size:.9rem;margin-top:34px}
+/* form */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);margin-top:30px}
+form{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.full{grid-column:1/-1}
+label{display:grid;gap:6px;font-size:.9rem;color:var(--mute)}
+input,select,textarea{font:300 1rem var(--sans);color:var(--text);background:rgba(0,0,0,.5);box-shadow:inset 0 3px 8px rgba(0,0,0,.7);border:1px solid rgba(212,175,55,.28);border-radius:12px;padding:13px 15px;width:100%;transition:border-color .3s,box-shadow .3s;color-scheme:dark}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-hi);box-shadow:inset 0 3px 8px rgba(0,0,0,.7),0 0 0 3px rgba(212,175,55,.2)}
+.ok{display:none;text-align:center;padding:50px 24px}
+.ok.show{display:block;animation:enter .7s both}
+.ok h3{font-size:2rem;margin-bottom:.4em}
+.check{width:74px;height:74px;margin:0 auto 18px}
+.check circle,.check path{fill:none;stroke:var(--gold);stroke-width:3;stroke-dasharray:240;stroke-dashoffset:240}
+.ok.show .check circle{animation:draw 1s forwards}
+.ok.show .check path{animation:draw .7s .7s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.contact dl{display:grid;gap:22px}
+.contact dt{font:italic 500 1.2rem var(--serif);color:var(--gold)}
+.contact dd a{border-bottom:1px solid rgba(212,175,55,.4)}
+.hours{width:100%;border-collapse:collapse;margin-top:6px}
+.hours td{padding:6px 0;border-bottom:1px solid rgba(212,175,55,.12)}
+.hours td:last-child{text-align:right;color:var(--gold-hi)}
+.map{aspect-ratio:1/1;max-height:420px;width:100%;padding:0;overflow:hidden}
+.map svg{width:100%;height:100%;display:block}
+footer{position:relative;z-index:3;text-align:center;padding:40px 20px calc(env(safe-area-inset-bottom,0px) + 40px);color:var(--mute);font-size:.85rem;border-top:1px solid rgba(212,175,55,.15)}
+@media(max-width:860px){
+.burger{display:block}
+nav{position:fixed;inset:0;background:rgba(5,4,3,.97);flex-direction:column;align-items:center;justify-content:center;gap:26px;opacity:0;pointer-events:none;transition:opacity .4s}
+nav.open{opacity:1;pointer-events:auto}
+nav a{font:500 2rem var(--serif);color:var(--gold-hi)}
+.burger{position:relative;z-index:60}
+.about,.split{grid-template-columns:1fr}
+form{grid-template-columns:1fr}
+.logo small{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero h1,.hero p,.cta{opacity:1}.depth i,.mark{transform:none!important}.mark{transform:translate(-50%,-50%)!important}}
+</style>
+</head>
+<body>
+<div class="depth" aria-hidden="true"><i class="d1"></i><i class="d2"></i><i class="d3"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header id="top">
+  <a href="#start" class="logo" aria-label="Cohibar Hamburg – Startseite">Cohibar<small>Hamburg</small></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menü</button>
+  <nav id="nav" aria-label="Hauptmenü">
+    <a href="#ueber">Über uns</a>
+    <a href="#drinks">Drinkkarte</a>
+    <a href="#shisha">Shishakarte</a>
+    <a href="#reservieren">Reservieren</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <section class="view" id="start" aria-label="Start">
+    <div class="mark" aria-hidden="true">C</div>
+    <div class="beam" aria-hidden="true"></div>
+    <div class="hero">
+      <h1 class="gold">Cohibar<span>Hamburg</span></h1>
+      <p>Ankommen, abschalten und den Abend genießen. Gute Drinks, entspannte Atmosphäre und genau die richtigen Vibes mitten in Hamburg.</p>
+      <div class="cta">
+        <a class="btn fill" href="#reservieren">Tisch reservieren</a>
+        <a class="btn" href="#drinks">Drinkkarte ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="ueber">
+    <div class="wrap">
+      <h2 class="gold">Über uns</h2>
+      <p class="lead">Ob auf einen Cocktail, einen Kaffee oder einfach einen schönen Abend: Willkommen in der Cohibar Hamburg.</p>
+      <div class="about">
+        <div>
+          <div class="quote">Hier wird aus „nur kurz auf einen Drink“ ganz schnell der beste Abend der Woche.</div>
+          <p>Gedimmtes Licht, tiefe Sessel und Musik, die genau laut genug ist: Die Cohibar liegt am Gertrudenkirchhof, keine Minute vom Trubel der Innenstadt – und fühlt sich doch an wie ein kleiner Ausstieg aus dem Alltag.</p>
+          <p>Unser Team mixt Klassiker mit Handschrift, brüht Kaffee, der den Namen verdient, und bringt die Shisha so, dass du dich um nichts mehr kümmern musst. Du kommst an, wir sorgen für den Rest.</p>
+          <p style="color:var(--mute);font-size:.9rem">Alle Inhalte auf dieser Seite sind Demo-Inhalte.</p>
+        </div>
+        <div class="stats">
+          <div class="glass"><b class="gold" >60</b><span>Drinks auf der Karte</span></div>
+          <div class="glass"><b class="gold" >12</b><span>Shisha-Sorten</span></div>
+          <div class="glass"><b class="gold" >7</b><span>Abende pro Woche</span></div>
+          <div class="glass"><b class="gold" >100</b><span>% gute Vibes</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="drinks">
+    <div class="wrap">
+      <h2 class="gold">Drinkkarte</h2>
+      <p class="lead">Von Signature Cocktails bis Flat White. Demo-Preise in Euro.</p>
+      <div class="tabs" role="tablist" id="dtabs"></div>
+      <div class="items" id="ditems"></div>
+    </div>
+  </section>
+
+  <section class="view" id="shisha">
+    <div class="wrap">
+      <h2 class="gold">Shishakarte</h2>
+      <p class="lead">Jede Shisha kommt frisch gestopft an deinen Platz. Die Striche zeigen die Intensität.</p>
+      <div class="tabs" role="tablist" id="stabs"></div>
+      <div class="items" id="sitems"></div>
+      <p class="note">Shisha ab 18 Jahren. Kohlewechsel inklusive. Demo-Inhalte.</p>
+    </div>
+  </section>
+
+  <section class="view" id="reservieren">
+    <div class="wrap">
+      <h2 class="gold">Reservieren</h2>
+      <p class="lead">Sag uns, wann du kommst. Wir halten deinen Platz bereit.</p>
+      <div class="split">
+        <div class="glass">
+          <form id="rform" novalidate>
+            <label>Name<input name="n" required autocomplete="name" placeholder="Vor- und Nachname"></label>
+            <label>Telefon<input name="t" type="tel" required autocomplete="tel" placeholder="040 …"></label>
+            <label>Datum<input name="d" type="date" required></label>
+            <label>Uhrzeit<select name="z"><option>18:00</option><option>19:00</option><option selected>20:00</option><option>21:00</option><option>22:00</option></select></label>
+            <label>Personen<select name="p"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option></select></label>
+            <label>Bereich<select name="b"><option>Lounge</option><option>Bar</option><option>Shisha-Ecke</option></select></label>
+            <label class="full">Wunsch (optional)<textarea name="w" rows="3" placeholder="Anlass, Allergien, Lieblingssofa …"></textarea></label>
+            <button class="btn fill full" type="submit">Platz anfragen</button>
+            <p class="full" id="err" style="color:#ffb4a0;font-size:.9rem" role="alert"></p>
+          </form>
+          <div class="ok" id="ok" role="status">
+            <svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><path d="M24 41l11 11 21-24"/></svg>
+            <h3 class="gold">Anfrage gesendet</h3>
+            <p id="okt" style="color:var(--mute)"></p>
+            <p style="color:var(--mute);font-size:.85rem;margin-top:14px">Demo: Es wurde nichts gespeichert oder verschickt.</p>
+            <button class="btn" style="margin-top:22px" id="again">Neue Anfrage</button>
+          </div>
+        </div>
+        <div class="glass">
+          <h3 style="font-size:1.8rem;color:var(--gold-hi);margin-bottom:.5em">Gut zu wissen</h3>
+          <p style="color:var(--mute);margin-bottom:1em">Ab 6 Personen rufen wir kurz zurück. Dein Tisch bleibt 20 Minuten nach der Reservierungszeit für dich frei.</p>
+          <p style="color:var(--mute);margin-bottom:1.4em">Lieber direkt sprechen?</p>
+          <a class="btn" href="tel:+494076752477">040 76752477</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="kontakt">
+    <div class="wrap">
+      <h2 class="gold">Kontakt</h2>
+      <p class="lead">Schau vorbei oder ruf an. Wir freuen uns auf dich.</p>
+      <div class="split contact">
+        <div class="glass">
+          <dl>
+            <div><dt>Adresse</dt><dd>Gertrudenkirchhof 10<br>20095 Hamburg</dd></div>
+            <div><dt>Telefon</dt><dd><a href="tel:+494076752477">040 76752477</a></dd></div>
+            <div><dt>Öffnungszeiten (Demo)</dt><dd><table class="hours">
+              <tr><td>Montag bis Donnerstag</td><td>17 – 01 Uhr</td></tr>
+              <tr><td>Freitag und Samstag</td><td>16 – 03 Uhr</td></tr>
+              <tr><td>Sonntag</td><td>16 – 00 Uhr</td></tr></table></dd></div>
+          </dl>
+        </div>
+        <div class="glass map" aria-label="Stilisierte Karte, Demo">
+          <svg viewBox="0 0 400 400" role="img" aria-label="Stilisierte Karte mit Markierung am Gertrudenkirchhof">
+            <defs><radialGradient id="g" cx="50%" cy="50%"><stop offset="0" stop-color="#d4af37" stop-opacity=".35"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></radialGradient></defs>
+            <rect width="400" height="400" fill="#0b0805"/>
+            <g stroke="#d4af37" stroke-opacity=".25" fill="none" stroke-width="2">
+              <path d="M0 120H400M0 250H400M0 330H400M90 0V400M210 0V400M310 0V400"/>
+              <path d="M0 40L400 190M120 400L330 0" stroke-opacity=".15"/>
+            </g>
+            <circle cx="210" cy="250" r="140" fill="url(#g)"/>
+            <circle class="pin" cx="210" cy="250" r="16" fill="none" stroke="#fff0b3" stroke-width="2"/>
+            <circle cx="210" cy="250" r="8" fill="#d4af37"/>
+            <text x="224" y="244" fill="#fff0b3" font-family="Jost,sans-serif" font-size="15">Cohibar</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© Cohibar Hamburg · Gertrudenkirchhof 10, 20095 Hamburg · 040 76752477<br>Alle Inhalte sind Demo-Inhalte.</footer>
+
+<script>
+(function(){
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+var DRINKS={
+"Signature":[["Gold Rush","Bourbon, Honig, Zitrone, Goldstaub","12,5"],["Smoke & Mirrors","Mezcal, Ananas, Limette, Rauchsalz","13"],["Hanseat","Gin, Holunder, Gurke, Tonic","11,5"],["Velvet Night","Dunkler Rum, Espresso, Vanille","12"]],
+"Klassiker":[["Old Fashioned","Bourbon, Zucker, Angostura","11"],["Negroni","Gin, Campari, roter Vermouth","10,5"],["Mojito","Rum, Minze, Limette, Soda","9,5"],["Espresso Martini","Wodka, Kaffeelikör, Espresso","11"]],
+"Alkoholfrei":[["Virgin Gold","Maracuja, Ingwer, Limette, Soda","7,5"],["Garden Spritz","Alkoholfreier Aperitif, Rosmarin, Tonic","8"],["Hausgemachte Limo","Saisonal, mit frischen Kräutern","5,5"]],
+"Kaffee & Tee":[["Espresso","Doppelt, kräftig","3,2"],["Flat White","Doppelter Espresso, Mikroschaum","4,2"],["Marokkanischer Minztee","Frisch aufgegossen","4"]]};
+var SHISHA={
+"Fruchtig":[["Doppelapfel","Klassisch, süß-herb",3],["Wassermelone Minze","Frisch und kühl",2],["Pfirsich Eistee","Leicht und fruchtig",2]],
+"Cremig":[["Vanille Sahne","Weich und rund",2],["Kaffee Karamell","Dunkel, süßlich",3]],
+"Kräftig":[["Cohibar Special","Hausmischung, Beeren, Zitrus",4],["Dark Mint","Intensiv und frisch",4],["Schwarze Traube","Dicht und aromatisch",4]]};
+var SP={"Cohibar Special":"23","default":"19"};
+function mount(data,tabs,box,shisha){
+  var keys=Object.keys(data);
+  function show(k){
+    $$("button",tabs).forEach(function(b){b.setAttribute("aria-selected",b.textContent===k)});
+    box.innerHTML="";
+    data[k].forEach(function(it,i){
+      var d=document.createElement("div");d.className="glass item";
+      var price=shisha?(SP[it[0]]||SP.default):it[2];
+      var m="";if(shisha){m='<div class="meter" aria-label="Intensität '+it[2]+' von 4">';for(var j=1;j<=4;j++)m+='<u class="'+(j<=it[2]?"f":"")+'"></u>';m+="</div>"}
+      d.innerHTML='<div class="row"><h3>'+it[0]+'</h3><i></i><b>'+price+' €</b></div><p>'+it[1]+'</p>'+m;
+      box.appendChild(d);
+    });
+  }
+  keys.forEach(function(k,i){var b=document.createElement("button");b.className="tab";b.setAttribute("role","tab");b.textContent=k;b.onclick=function(){show(k)};tabs.appendChild(b)});
+  show(keys[0]);
+}
+mount(DRINKS,$("#dtabs"),$("#ditems"),false);
+mount(SHISHA,$("#stabs"),$("#sitems"),true);
+
+
+/* router */
+var nav=$("#nav"),burger=$("#burger"),header=$("#top");
+function route(){
+  var id=(location.hash||"#start").slice(1);
+  if(!$("#"+id)||!$("#"+id).classList.contains("view"))id="start";
+  $$(".view").forEach(function(v){v.classList.toggle("on",v.id===id)});
+  $$("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+id)});
+  nav.classList.remove("open");burger.setAttribute("aria-expanded","false");
+  window.scrollTo({top:0,behavior:"instant"});
+  document.title=(id==="start"?"":$("#"+id+" h2").textContent+" · ")+"Cohibar Hamburg";
+}
+window.addEventListener("hashchange",route);route();
+burger.onclick=function(){var o=nav.classList.toggle("open");burger.setAttribute("aria-expanded",o);burger.textContent=o?"Schließen":"Menü"};
+var rm=matchMedia("(prefers-reduced-motion: reduce)").matches,tk=false;
+function sc(){header.classList.toggle("solid",scrollY>40);if(!rm)document.documentElement.style.setProperty("--sy",scrollY);tk=false}
+window.addEventListener("scroll",function(){if(!tk){tk=true;requestAnimationFrame(sc)}},{passive:true});
+
+
+/* reservation (demo) */
+var d=$("#rform [name=d]");var td=new Date();td.setMinutes(td.getMinutes()-td.getTimezoneOffset());d.min=td.toISOString().slice(0,10);
+$("#rform").addEventListener("submit",function(e){
+  e.preventDefault();var f=e.target,err=$("#err");
+  if(!f.n.value.trim()||!f.t.value.trim()||!f.d.value){err.textContent="Bitte Name, Telefon und Datum ausfüllen.";return}
+  err.textContent="";
+  var dt=new Date(f.d.value).toLocaleDateString("de-DE",{weekday:"long",day:"numeric",month:"long"});
+  $("#okt").textContent=f.n.value.trim()+", wir haben deine Anfrage für "+f.p.value+" Personen am "+dt+" um "+f.z.value+" Uhr ("+f.b.value+") notiert.";
+  f.style.display="none";$("#ok").classList.add("show");
+});
+$("#again").onclick=function(){$("#rform").style.display="grid";$("#rform").reset();$("#ok").classList.remove("show")};
+
+})();
+</script>
+</body>
+</html>
